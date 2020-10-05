@@ -1,0 +1,14 @@
+﻿DELETE FROM Customer_T WHERE Cust_Country = 'CAN';
+ERROR: update or delete on table "customer_t" violates foreign key constraint "fk_cust_id" on table "invoice_t"
+SQL state: 23503
+
+This error occurred because it violated the foreign key constraint fk_cust_id from table invoice_t
+as well as violating the one-to-many relationship it shares with table invoice_t
+
+DELETE FROM Product_T WHERE Cntry_Origin = 'RUS';
+ERROR: update or delete on table "product_t" violates foreign key constraint "fk2_invoice_line" on table "invoice_line_t"
+SQL state: 23503
+
+This error occurred because it violated the foreign key constraint fk2_invoice_line from table invoice_line_t
+because fk2_invoice_line references column prod_code from product table. Also the delete statement violated the
+the one to many relationship between product_t and invoice_line_t
